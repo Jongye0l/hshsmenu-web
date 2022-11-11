@@ -1,0 +1,98 @@
+.practicel {
+    text-align: center;
+    font-size: 35px;
+}
+.button {
+  width: 32px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+  display: inline-block;
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.21);
+  border-bottom: 4px solid rgba(0,0,0,0.21);
+  border-radius: 4px;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+  background: rgba(27,188,194,1);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(27,188,194,1)), to(rgba(24,163,168,1)));
+  background: -webkit-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+  background: -moz-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+  background: -o-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+  background: linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1bbcc2', endColorstr='#18a3a8', GradientType=0);
+}
+@media all and (max-width:600px) {
+    .practicel {
+    font-size: 30px;
+    }
+
+    .button {
+        padding: 7px 14px;
+        font-size: 14px;
+        width: 28px;
+    }
+}
+@media all and (max-width:520px) {
+    .practicel {
+    font-size: 26px;
+    }
+
+    .button {
+        padding: 6px 12px;
+        font-size: 12px;
+        width: 24px;
+    }
+}
+Main {
+    text-align: center;
+    font-size: 24px
+}
+menu {
+    font-size: 18px
+}
+.box {
+    width: 450px;
+    height: 350px;
+    border: 8px solid #000;
+    float: left;
+    margin: 20px;
+}
+box {
+    float: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+}
+box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: inherit;
+}
+@media (orientation: portrait) {
+    box {
+        flex-direction: column;
+    }
+    Main {
+        text-align: center;
+        font-size: 20px
+    }
+    menu {
+        font-size: 16px
+    }
+
+    .box {
+        height: 300px;
+    }
+}
+
+@media (orientation: landscape) {
+}
