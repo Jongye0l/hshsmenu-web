@@ -13,7 +13,7 @@ import java.text.ParseException;
 @RestController
 public class WebRestController {
 
-    @GetMapping("/")
+    @GetMapping("/hshsmenu")
     public String index() {
         System.out.println("new web connection");
         Day day = new Day();
@@ -24,11 +24,11 @@ public class WebRestController {
                 "<title>형석고 급식 알리미</title>" +
                 "</head>" +
                 "<frameset rows=\"100%,*\" border=\"0\">" +
-                "<frame src=\"/day/" + day.getToday() + "\"></frameset>" +
+                "<frame src=\"/hshsmenu/day/" + day.getToday() + "\"></frameset>" +
                 "</html>";
     }
 
-    @GetMapping("/day/{day}")
+    @GetMapping("/hshsmenu/day/{day}")
     public String day(@PathVariable("day") int day) throws ParseException, IOException {
         Day day1 = new Day(day);
         Document doc = Jsoup.connect("https://school.cbe.go.kr/hshs-h/M01030803/list?ymd=" + day1.getToday()).get();
@@ -42,13 +42,13 @@ public class WebRestController {
                 "<html lang=\"kr\">" +
                 "<head>" +
                 "   <meta charset=\"UTF-8\">" +
-                "   <title>testWeb</title>" +
-                "   <link rel=\"stylesheet\" type=\"text/css\" href=\"/index.css\">" +
+                "   <title>형석고 급식 알리미</title>" +
+                "   <link rel=\"stylesheet\" type=\"text/css\" href=\"/hshsmenu/index.css\">" +
                 "   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
                 "</head>" +
                 "<body>" +
-                "   <a href=\"/day/" + day1.getPrevious() + "\" class=\"button\" style=\"float: left\">어제</a>" +
-                "   <a href=\"/day/" + day1.getNext() + "\" class=\"button\" style=\"float: right\">내일</a>" +
+                "   <a href=\"/hshsmenu/day/" + day1.getPrevious() + "\" class=\"button\" style=\"float: left\">어제</a>" +
+                "   <a href=\"/hshsmenu/day/" + day1.getNext() + "\" class=\"button\" style=\"float: right\">내일</a>" +
                 "   <div class=\"practicel\">" + day1.getTitle() + "</div>" +
                 "   <box>" +
                 "       <div class=\"box lunch\">" +
@@ -57,32 +57,44 @@ public class WebRestController {
             html.append("<Main>" +
                     "   <br>" +
                     "   <br>" +
-                    "   <br>" +
                     "   <br>식단이 없습니다." +
                     "</Main>");
         } else {
-            html.append("<menu>" +
-                    "   <br>" );
+            String lunchText = "<menu>" +
+                    "   <br>" ;
             for(Element el : lunch.select("li")) {
-                html.append(el.text()).append("<br>");
+                lunchText += el.text() + "<br>";
             }
-            html.append("</menu>");
+            lunchText += "</menu>";
+            lunchText = lunchText.replace("*", "");
+            lunchText = lunchText.replace(".", "");
+            for (int i = 0; i < 10; i++) {
+                lunchText = lunchText.replace("" + i, "");
+            }
+            lunchText = lunchText.replace("()", "");
+            html.append(lunchText);
         }
         html.append("</div>" + "<div class=\"box dinner\">" + "<Main>석식</Main>");
         if(dinner == null) {
             html.append("<Main>" +
                     "   <br>" +
                     "   <br>" +
-                    "   <br>" +
                     "   <br>식단이 없습니다." +
                     "</Main>");
         } else {
-            html.append("<menu>" +
-                    "   <br>");
-            for(Element el : dinner.select("li")) {
-                html.append(el.text()).append("<br>");
+            String dinnerText = "<menu>" +
+                    "   <br>" ;
+            for(Element el : lunch.select("li")) {
+                dinnerText += el.text() + "<br>";
             }
-            html.append("</menu>");
+            dinnerText += "</menu>";
+            dinnerText = dinnerText.replace("*", "");
+            dinnerText = dinnerText.replace(".", "");
+            for (int i = 0; i < 10; i++) {
+                dinnerText = dinnerText.replace("" + i, "");
+            }
+            dinnerText = dinnerText.replace("()", "");
+            html.append(dinnerText);
         }
         html.append("       </div>" +
                 "   </box>" +

@@ -47,10 +47,10 @@
 }
 Main {
     text-align: center;
-    font-size: 24px
+    font-size: 30px
 }
 menu {
-    font-size: 18px
+    font-size: 22px
 }
 .box {
     width: 450px;
@@ -83,10 +83,10 @@ box::before {
     }
     Main {
         text-align: center;
-        font-size: 20px
+        font-size: 30px
     }
     menu {
-        font-size: 16px
+        font-size: 24px
     }
 
     .box {
