@@ -1,11 +1,11 @@
 # hshsmenu-web
-[접속](http://jongyeol.kro.kr/hshsmenu)
+[접속](https://jongyeol.kro.kr)
 ---
 ### 소개 Information
 형석고등학교에 급식 메뉴를 확인합니다.
 ---
 ### 사용방법 How to use
-[이 링크](http://jongyeol.kro.kr/hshsmenu) 를 통해 접속하실 수 있습니다.
+[이 링크](https://jongyeol.kro.kr) 를 통해 접속하실 수 있습니다.
 ---
 ### 기능 Feature
 * 형석고등학교 사이트에서 급식 정보를 받아 뜰수 있게 합니다.
